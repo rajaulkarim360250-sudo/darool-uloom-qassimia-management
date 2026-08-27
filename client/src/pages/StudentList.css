@@ -1,0 +1,42 @@
+.student-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.student-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.student-list-header h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.student-list-filters {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .student-list-header {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .student-list-filters {
+    flex-direction: column;
+  }
+
+  .student-list-filters input,
+  .student-list-filters .ant-select {
+    width: 100% !important;
+  }
+}

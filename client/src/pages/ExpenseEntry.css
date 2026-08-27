@@ -1,0 +1,26 @@
+.expense-entry-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.expense-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.expense-header h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .expense-header {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+}
