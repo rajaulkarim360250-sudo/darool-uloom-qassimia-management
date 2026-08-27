@@ -27,7 +27,35 @@
   min-height: calc(100vh - 64px);
 }
 
+/* Desktop Styles */
+@media (min-width: 769px) {
+  .desktop-sidebar {
+    display: block !important;
+  }
+  
+  .desktop-menu-btn {
+    display: inline-block !important;
+  }
+
+  .mobile-menu-btn {
+    display: none !important;
+  }
+}
+
+/* Mobile Styles */
 @media (max-width: 768px) {
+  .desktop-sidebar {
+    display: none !important;
+  }
+
+  .desktop-menu-btn {
+    display: none !important;
+  }
+
+  .mobile-menu-btn {
+    display: inline-block !important;
+  }
+
   .app-content {
     padding: 12px;
   }

@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Row, Col, Card, Statistic, Spin } from 'antd';
+import { Row, Col, Card, Statistic, Spin, message } from 'antd';
 import { DollarOutlined, UserOutlined, ShoppingOutlined, FileTextOutlined } from '@ant-design/icons';
 import { fetchStudents } from '../store/slices/studentSlice';
 import { fetchIncomes } from '../store/slices/incomeSlice';
 import { fetchExpenses } from '../store/slices/expenseSlice';
+import DashboardCharts from '../components/DashboardCharts';
 
 function Dashboard() {
   const dispatch = useDispatch();
@@ -81,12 +82,21 @@ function Dashboard() {
         </Col>
       </Row>
 
+      <Card title="আর্থিক বিশ্লেষণ" style={{ marginBottom: '24px' }}>
+        <DashboardCharts />
+      </Card>
+
       <Row gutter={[16, 16]}>
         <Col xs={24} lg={12}>
           <Card title="সর্বশেষ ছাত্র" style={{ minHeight: '300px' }}>
             {students.slice(-5).map((student, index) => (
-              <div key={index} style={{ padding: '8px 0', borderBottom: '1px solid #eee' }}>
-                {student.firstName} {student.lastName} - {student.class}
+              <div key={index} style={{ padding: '12px 0', borderBottom: '1px solid #eee' }}>
+                <p style={{ margin: '4px 0', fontWeight: 'bold' }}>
+                  {student.firstName} {student.lastName}
+                </p>
+                <p style={{ margin: '4px 0', fontSize: '12px', color: '#666' }}>
+                  শ্রেণী: {student.class} | ফি: ৳{student.monthlyFee}
+                </p>
               </div>
             ))}
           </Card>
@@ -95,13 +105,23 @@ function Dashboard() {
         <Col xs={24} lg={12}>
           <Card title="সর্বশেষ লেনদেন" style={{ minHeight: '300px' }}>
             {incomes.slice(-3).map((income, index) => (
-              <div key={index} style={{ padding: '8px 0', borderBottom: '1px solid #eee' }}>
-                <span style={{ color: '#52c41a' }}>+</span> {income.amount} টাকা - {income.description}
+              <div key={index} style={{ padding: '12px 0', borderBottom: '1px solid #eee' }}>
+                <p style={{ margin: '4px 0', fontWeight: 'bold', color: '#52c41a' }}>
+                  +৳{income.amount} - {income.incomeCategory}
+                </p>
+                <p style={{ margin: '4px 0', fontSize: '12px', color: '#666' }}>
+                  {income.studentName || 'সাধারণ'}
+                </p>
               </div>
             ))}
             {expenses.slice(-2).map((expense, index) => (
-              <div key={index} style={{ padding: '8px 0', borderBottom: '1px solid #eee' }}>
-                <span style={{ color: '#f5222d' }}>-</span> {expense.amount} টাকা - {expense.description}
+              <div key={index} style={{ padding: '12px 0', borderBottom: '1px solid #eee' }}>
+                <p style={{ margin: '4px 0', fontWeight: 'bold', color: '#f5222d' }}>
+                  -৳{expense.amount} - {expense.expenseCategory}
+                </p>
+                <p style={{ margin: '4px 0', fontSize: '12px', color: '#666' }}>
+                  {expense.description}
+                </p>
               </div>
             ))}
           </Card>

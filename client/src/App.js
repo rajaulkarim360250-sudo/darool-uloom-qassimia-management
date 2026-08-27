@@ -4,6 +4,11 @@ import { useSelector } from 'react-redux';
 import Layout from './components/Layout';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
+import StudentList from './pages/StudentList';
+import IncomeEntry from './pages/IncomeEntry';
+import ExpenseEntry from './pages/ExpenseEntry';
+import ReportsPage from './pages/ReportsPage';
+import Settings from './pages/Settings';
 import './App.css';
 
 function App() {
@@ -21,6 +26,11 @@ function App() {
           <>
             <Route path="/" element={<Layout><Dashboard /></Layout>} />
             <Route path="/dashboard" element={<Layout><Dashboard /></Layout>} />
+            <Route path="/students" element={<Layout><StudentList /></Layout>} />
+            <Route path="/income" element={<Layout><IncomeEntry /></Layout>} />
+            <Route path="/expense" element={<Layout><ExpenseEntry /></Layout>} />
+            <Route path="/reports" element={<Layout><ReportsPage /></Layout>} />
+            <Route path="/settings" element={<Layout><Settings /></Layout>} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </>
         )}
